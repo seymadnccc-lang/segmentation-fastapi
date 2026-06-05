@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  segmentation-api:
+    build:
+      context: .
+      platforms:
+        - linux/amd64
+        - linux/arm64
+    ports:
+      - "7001:7001"
+    restart: always
