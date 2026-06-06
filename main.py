@@ -4,15 +4,15 @@ import torch
 import numpy as np
 import cv2
 from model import UNet
-import io
 
 app = FastAPI()
 
 DEVICE = "cpu"
 THRESHOLD = 0.5
-MODEL_PATH = "unet_tgs_salt.pth"
 
-model = torch.load(MODEL_PATH, map_location=DEVICE, weights_only=False)
+# Modeli yükle
+model = UNet()
+model.load_state_dict(torch.load('unet_weights.pth', map_location=DEVICE))
 model.eval()
 
 @app.get("/")
